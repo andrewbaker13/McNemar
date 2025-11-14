@@ -1,21 +1,25 @@
 # Title
-Flagship Retail Promotions Matrix
+Retail Promotions Pricing Test
 
 # Description
-The flagship apparel chain is rewriting its in-store promotions calendar ahead of peak back-to-school traffic. Four regional clusters are piloting wildly different discount philosophies: a dependable 15% off message to build trust, a tiered ladder that deepens discounts on high-margin assortments, sporadic flash-sale weekends built for urgency, and a loyalty bundle that pairs lighter discounts with app-exclusive perks. Each cluster reports weekly gross-margin dollars per store, adjusted for traffic and staffing.
+A national retailer is piloting a smart-pricing endcap. Associates can either stick with the legacy signage bundle or swap to an AI-powered sign that personalizes the promo headline. Every pilot store rotated through both approaches across two consecutive weekends, so each household ID appears twice in the data.
 
-Merchandising leaders are debating whether “steady Eddie” pricing protects perception, while the loyalty team argues that bundling perks keeps high-value shoppers engaged. This preset loads the observed results so you can measure how each storyline pulls on the grand mean before committing to one playbook for 1,200 stores.
+The metric of interest is whether a shopper purchased the featured bundle at least once during their weekend visit. Use this preset to review how many shoppers flipped from “no bundle” to “bundle” after seeing the personalized messaging.
 
 # Alpha
-0.10
+0.05
 
-# Groups
-Steady 15 Percent|32.4|3.9|85
-Tiered Promo Calendar|34.1|4.5|82
-Flash Sale Bursts|30.8|4.2|78
-Loyalty Bundle Weekends|33.6|4.0|88
+# Counts
+a_yes_b_yes=188
+a_yes_b_no=58
+a_no_b_yes=92
+a_no_b_no=401
+
+# Labels
+condition_a=Legacy signage
+condition_b=Adaptive signage
+positive_label=Bundle purchase
+negative_label=No bundle
 
 # Additional Inputs
-axis_min=
-axis_max=
-mean_reference=
+analysis_method=chi2_nocc

@@ -1,15 +1,15 @@
-# One-Way ANOVA Explorer
-Interactive teaching aid for comparing two or more group means using a one-way ANOVA. Enter group summaries (mean, SD, n) for up to ten cells to:
+# McNemar Test Explorer
+Interactive teaching aid for paired, binary outcomes. Load a 2×2 contingency table describing how the same audience responded on Variant A vs Variant B (or before vs after) to:
 
-- Run the omnibus F test against the grand mean.
-- Visualize confidence bands on group means.
-- Explore Tukey HSD planned comparisons via the advanced panel.
+- Run McNemar’s test via continuity-corrected chi-square, the uncorrected chi-square, or the exact binomial approach.
+- Visualize the contingency matrix and spotlight the one-sided wins (“switchers”) that power the test.
+- Auto-generate APA-ready reporting language plus a managerial narrative that highlights direction, magnitude, and risk.
 
-Deployed example: https://andrewbaker13.github.io/AB_ttest_tool/index.html
+Deployed example: (coming soon)
 
-## Marketing scenario presets
+## Scenario presets
 
-Use the dropdown in the “Practical Scenario” section to auto-populate inputs from the `scenarios/` folder. Each scenario is a simple text file with three sections:
+Use the dropdown in the “Practical Scenario” section to populate the matched table from files stored inside `scenarios/`. Each preset is a lightweight text file composed of the following sections:
 
 ```
 # Title
@@ -19,16 +19,24 @@ Scenario name
 One or more paragraphs (blank line between paragraphs)
 
 # Alpha
-0.05   ← optional significance level for the preset
+0.05    ← optional significance level
 
-# Groups
-Group name|Mean|SD|Sample size
+# Counts
+a_yes_b_yes=135
+a_yes_b_no=22
+a_no_b_yes=41
+a_no_b_no=302
 
-# Planned Comparisons
-Group A|Group B   ← optional Tukey pairs (one per line)
+# Labels
+condition_a=Legacy nurture controller
+condition_b=Insight-driven controller
+positive_label=Conversion
+negative_label=No conversion
 
 # Additional Inputs
-key=value entries for future settings (leave blank to keep defaults)
+analysis_method=exact   ← optional settings to toggle defaults
 ```
 
-List the available scenarios in `scenarios/scenario-index.json` (id, label, file path). Adding a new `.txt` file and referencing it in the index automatically exposes it in the UI. Presets can overwrite the descriptive copy, populate the group summary inputs, set the significance level, pre-load Tukey comparison rows, and capture additional key/value inputs for future features via the `# Additional Inputs` section (keys with blank values are ignored).
+The `# Counts` block is required and encodes the four cells of the 2×2 table using a consistent naming convention (`a_yes_b_yes`, `a_yes_b_no`, `a_no_b_yes`, `a_no_b_no`). The optional `# Labels` block lets a preset customize the condition and outcome names. Additional key/value pairs (for example, the preferred analysis method) live inside `# Additional Inputs`.
+
+List the available scenarios in `scenarios/scenario-index.json` (id, label, file path). Adding a new `.txt` file and referencing it in the index automatically exposes it in the UI.
